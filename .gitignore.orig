@@ -1,4 +1,5 @@
->>>>>>> 082ae24dead002eb9dbc9460116b1d478916cb00
+<<<<<<< HEAD
+>>>>>>> tweak gitignore
 
 # Created by https://www.gitignore.io/api/node,macos,reactnative
 
@@ -252,4 +253,8 @@ freeline.py
 freeline/
 freeline_project_description.json
 
+<<<<<<< HEAD
 # End of https://www.gitignore.io/api/node,macos,reactnative
+=======
+# End of https://www.gitignore.io/api/node,macos,reactnative
+>>>>>>> tweak gitignore
