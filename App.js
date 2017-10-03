@@ -5,7 +5,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-<<<<<<< HEADt
+<<<<<<< HEAD
+>>>>>>> c023d49ee6055c97008b96c787f86a471f12197a
         <Text>Happy Coding!</Text>
       </View>
     );

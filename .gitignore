@@ -252,4 +252,6 @@ freeline.py
 freeline/
 freeline_project_description.json
 
+<<<<<<< HEAD
 # End of https://www.gitignore.io/api/node,macos,reactnative
+>>>>>>> c023d49ee6055c97008b96c787f86a471f12197a
