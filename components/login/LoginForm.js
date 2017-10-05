@@ -82,7 +82,7 @@ class LoginForm extends Component {
                            secureTextEntry/>
                  {/*   <Button onPress={onButtonPress} title = 'Login' style={styles.loginButton} /> */}
               <TouchableOpacity style={styles.buttonContainer} onPress={this.signup}>
-                    <Text  style={styles.buttonText}>Signup</Text>
+                    <Text  style={styles.buttonTextSignUp}>Signup</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.login}>
                     <Text  style={styles.buttonText}>Login</Text>
@@ -95,7 +95,9 @@ class LoginForm extends Component {
 
 const styles = StyleSheet.create({
     container: {
-     padding: 20
+     padding: 20,
+     marginBottom: 10,
+
     },
     input:{
         height: 40,
@@ -106,13 +108,22 @@ const styles = StyleSheet.create({
     },
     buttonContainer:{
         backgroundColor: '#2980b6',
-        paddingVertical: 15
+        paddingVertical: 15,
+        marginBottom: 5,
     },
     buttonText:{
         color: '#fff',
         textAlign: 'center',
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingBottom:10
     },
+    buttonTextSignUp:{
+        color: 'orange',
+        textAlign: 'center',
+        fontWeight: '700',
+        paddingBottom:10
+    },
+
     loginButton:{
       backgroundColor:  '#2980b6',
        color: '#fff'
