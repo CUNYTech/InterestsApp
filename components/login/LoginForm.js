@@ -29,15 +29,14 @@ class LoginForm extends Component {
 
             this.setState({
                 response: "Account Created"
-               
             });
-
-            alert(this.state.response);
 
         } catch (error) {
             this.setState({
                 response: error.toString()
             })
+        } finally {
+            alert(this.state.response);
         }
 
     }
@@ -51,11 +50,14 @@ class LoginForm extends Component {
                 response: "Logged In!"
             });
 
-            alert(this.state.response)
         } catch (error) {
+
             this.setState({
                 response: error.toString()
             })
+
+        } finally {
+            alert(this.state.response);
         }
 
     }
@@ -70,7 +72,7 @@ class LoginForm extends Component {
                             autoCorrect={false}
                             keyboardType='email-address'
                             returnKeyType="next"
-                            placeholder='Email or Mobile Num'
+                            placeholder='Email'
                             onChangeText ={(email) => this.setState({email})}
                             placeholderTextColor='rgba(225,225,225,0.7)'/>
 
