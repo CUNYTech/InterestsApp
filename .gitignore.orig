@@ -1,4 +1,5 @@
-README.md
+<<<<<<< HEAD
+>>>>>>> tweak gitignore
 
 # Created by https://www.gitignore.io/api/node,macos,reactnative
 
@@ -251,3 +252,9 @@ captures/
 freeline.py
 freeline/
 freeline_project_description.json
+
+<<<<<<< HEAD
+# End of https://www.gitignore.io/api/node,macos,reactnative
+=======
+# End of https://www.gitignore.io/api/node,macos,reactnative
+>>>>>>> tweak gitignore
