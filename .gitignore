@@ -1,4 +1,4 @@
->>>>>>> 082ae24dead002eb9dbc9460116b1d478916cb00
+README.md
 
 # Created by https://www.gitignore.io/api/node,macos,reactnative
 
@@ -251,7 +251,3 @@ captures/
 freeline.py
 freeline/
 freeline_project_description.json
-
-<<<<<<< HEAD
-# End of https://www.gitignore.io/api/node,macos,reactnative
->>>>>>> c023d49ee6055c97008b96c787f86a471f12197a
