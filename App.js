@@ -6,9 +6,9 @@ import {
   Text,
   View,
   KeyboardAvoidingView,
-  TextInput, 
-  TouchableOpacity, 
-  Alert, 
+  TextInput,
+  TouchableOpacity,
+  Alert,
   Button,
   StatusBar
 } from 'react-native';
@@ -17,12 +17,10 @@ import { StackNavigator } from 'react-navigation';
 
 // IMPORT COMPONENTS
 import * as firebase from "firebase";
-import InterestScreen from './components/registration/InterestsPage'; 
-import BiographyScreen from './components/registration/Biography'; 
-import ImageUploadScreen from './components/registration/ImageUpload'; 
-import UserWithSimilarInterestsScreen from './components/userViews/UserWithSimilarInterests'; 
-
-
+import InterestScreen from './components/registration/InterestsPage';
+import BiographyScreen from './components/registration/Biography';
+import ImageUploadScreen from './components/registration/ImageUpload';
+import SimilarInterestsLayout from './components/similarInterests/similarInterestsView.js';
 
 
 class LoginFormScreen extends Component {
@@ -47,11 +45,11 @@ class LoginFormScreen extends Component {
   async signup() {
     try {
         await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
-        //send userId to the user table to create a new node within the user table, the new node will hold the userid ex: id: 234 everytime to fill this 
+        //send userId to the user table to create a new node within the user table, the new node will hold the userid ex: id: 234 everytime to fill this
         this.setState({
             response: "Account Created"
         });
-        
+
     } catch (error) {
         this.setState({
             response: error.toString()
@@ -63,7 +61,7 @@ class LoginFormScreen extends Component {
 
   async login() {
     const { navigate } = this.props.navigation;
-  
+
 
     try {
         await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
@@ -133,7 +131,7 @@ export const SimpleApp = StackNavigator({
   Interest: { screen: InterestScreen },
   Biography: { screen: BiographyScreen },
   ImageUpload: { screen: ImageUploadScreen },
-  similarIterests: { screen: UserWithSimilarInterestsScreen },
+  similarIterests: { screen: SimilarInterestsLayout },
 });
 
 
@@ -209,5 +207,3 @@ const styles = StyleSheet.create({
   }
 
 });
-
-
