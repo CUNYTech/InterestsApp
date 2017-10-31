@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Image} from 'react-native';
+import { Image} from 'react-native';
+import { Content, Card, CardItem, Spinner, Text, Right, Left, Icon} from 'native-base';
 import * as firebase from "firebase";
 
 class ImageComponent extends Component{
@@ -34,20 +35,21 @@ class ImageComponent extends Component{
 
   render(){
     return(
-      <View>
+      <Content>
       {this.state.loading ?
-        ( <View>
-            <Text> Loading Users with Similar Interests...</Text>
-          </View>
+        (
+          <Content>
+            <Spinner/>
+          </Content>
         ):(
             this.state.exists ? (
-              <View><Image style={{width: 120, height: 120, margin: 5, flexDirection: "row"}} source={{uri: this.state.image}} /></View>
+              <Content><Image style={{width: 40, height: 40}} source={{uri: this.state.image}} /></Content>
             ):(
-              <View><Image style={{width: 120, height: 120, margin: 5, flexDirection: "row"}} source={require('../../images/astronaut.png')} /></View>
+              <Content><Image style={{width: 40, height: 40}} source={require('../../images/astronaut.png')} /></Content>
             )
         )
       }
-      </View>
+      </Content>
     )
   }
 }
@@ -88,23 +90,30 @@ export default class ListOfSimilarUsers extends Component {
 
   render(){
     return(
-      <View>
+      <Content>
         {this.state.loading ?
-          ( <View>
-              <Text> Loading Users with Similar Interests...</Text>
-            </View>
+          (
+            <Content>
+              <Card>
+                <Text> Loading Users...</Text>
+              </Card>
+            </Content>
           ):
           (
             this.state.usersWithSimilarInterests.map((item, key) => {
               return(
-                <View key={key}>
-                  <Text> {item.name} </Text>
-                  <ImageComponent userId={item.userId}/>
-                </View>)
+                 <CardItem key={key}>
+                    <ImageComponent userId={item.userId}/>
+                    <Text style={{"flexGrow":2}}> {item.name} </Text>
+                    <Right>
+                      <Icon name='add-circle' />
+                    </Right>
+                </CardItem>
+              )
             })
           )
         }
-      </View>
+      </Content>
     )
   }
 }

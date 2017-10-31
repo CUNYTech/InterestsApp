@@ -11,7 +11,9 @@ Child Components: InterestCard
 ******************************************************************************/
 
 import React, { Component } from 'react';
-import {Container, Content, Spinner, Text } from 'native-base';
+import {Container, Content, Spinner, Text, StyleProvider, H1 } from 'native-base';
+import getTheme from '../../native-base-theme/components';
+import material from '../../native-base-theme/variables/material';
 import InterestCard from './InterestCard.js';
 import * as firebase from "firebase";
 
@@ -82,19 +84,20 @@ export default class SimilarInterestsLayout extends Component {
   render(){
 
     return(
+      <StyleProvider style={getTheme(material)}>
       <Container>
         {
           this.state.loading ? (
             <Content>
               <Spinner />
-              <Text> Loading Interests of Users </Text>
+              <Text style={{"textAlign": "center"}}> Loading Interests of Users </Text>
             </Content>
           ) :
           (
             <Content>
-              <Text>
-                Interests
-              </Text>
+              <H1 style={{"textAlign": "center"}}>
+                Interests & Similar Users
+              </H1>
               {
                 this.state.loggedInUsersInterests.map((interest, key) => {
                   return(
@@ -107,7 +110,7 @@ export default class SimilarInterestsLayout extends Component {
           )
         }
       </Container>
-
+      </StyleProvider>
     )
   }
 }
