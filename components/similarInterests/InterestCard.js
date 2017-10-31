@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View} from 'react-native';
 import ListOfSimilarUsers from './listOfSimilarUsers.js'
+import * as firebase from "firebase";
 
 export default class InterestCard extends Component {
   constructor(props){
     super(props);
     this.state = {
+      userId: firebase.auth().currentUser,
       interestsArray: this.props.interestArray,
       usersWithSimilarInterests: [],
       loading: true
@@ -13,15 +15,21 @@ export default class InterestCard extends Component {
   }
 
   componentWillMount(){
-    let iDsForUsersWithSimilarInterests = ["123", "456", "789"]
-    console.log(this.state.interestArray)
-    // makes api call to interests table
-    setTimeout(() => {
+
+    let ref =  firebase.database().ref('Luis_Activities/' + this.state.interestsArray[0]);
+    let responseActivity = [];
+
+    ref.on('value', (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        let childData = childSnapshot.val();
+        responseActivity.push(childData)
+      });
+
       this.setState({
-        usersWithSimilarInterests: iDsForUsersWithSimilarInterests,
+        usersWithSimilarInterests: responseActivity,
         loading: false
       })
-    }, 1000);
+    })
   }
 
   render(){
@@ -33,13 +41,7 @@ export default class InterestCard extends Component {
           (
             <View>
               <Text> Interests One: {this.state.interestsArray[0]} </Text>
-              <ListOfSimilarUsers interest={this.state.interestsArray[0]}/>
-
-              <Text> Interests Two: {this.state.interestsArray[1]} </Text>
-              <ListOfSimilarUsers interest={this.state.interestsArray[1]}/>
-
-              <Text> Interest Three: {this.state.interestsArray[2]} </Text>
-              <ListOfSimilarUsers interest={this.state.interestsArray[2]}/>
+              <ListOfSimilarUsers similarUsersIds={this.state.usersWithSimilarInterests}/>
             </View>
           )
         }

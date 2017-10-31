@@ -1,16 +1,47 @@
 import React, { Component } from 'react';
-import { Text, View} from 'react-native';
+import { Text, View, Image} from 'react-native';
+import * as firebase from "firebase";
 
 const users = {
   guitar: ["alfonso ","kevin"],
   coding: ["kevin t"," luis"],
-  sports: [" greggian ", " robert " ]
+  Sports: [" greggian ", " robert " ]
+}
+
+class ImageComponent extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      userId: this.props.userId,
+      image: '',
+      loading: true
+    }
+  }
+
+  componentWillMount(){
+    firebase.storage().ref().child('images/'+ this.state.userId + '/profilePicture.jpg').getDownloadURL()
+      .then((url) => {
+        this.setState({
+          image: url
+        })
+      })
+    }
+
+  render(){
+    return(
+      <View>
+       <Image style={{width: 120, height: 120, margin: 5, flexDirection: "row"}} source={{uri: this.state.image}} />
+      </View>
+    )
+  }
+
 }
 
 export default class ListOfSimilarUsers extends Component {
   constructor(props){
     super(props);
     this.state = {
+      userId: firebase.auth().currentUser,
       interest: this.props.interest,
       usersWithSimilarInterests: [],
       loading: true
@@ -18,16 +49,25 @@ export default class ListOfSimilarUsers extends Component {
   }
 
   componentWillMount(){
+    let usersWithSimilarInterests = []
 
-    // makes api call to interests table
-    var rand = Math.round(Math.random() * (3000 - 500)) + 500;
+    this.props.similarUsersIds.forEach((userId) => {
+      let objectUser = {}
+      const id = userId
+      firebase.database().ref('Luis_Users/' + userId).ref.on('value', (snapshot) => {
+      //   // is getting every snapshot from  Luis_Users
+        objectUser = snapshot.val()
+        objectUser.userId = id
+        usersWithSimilarInterests.push(objectUser)
+      });
+    })
 
     setTimeout(() => {
       this.setState({
-        usersWithSimilarInterests: users[this.state.interest],
+        usersWithSimilarInterests: usersWithSimilarInterests,
         loading: false
       })
-    }, rand);
+    }, 3000);
   }
 
   render(){
@@ -35,13 +75,16 @@ export default class ListOfSimilarUsers extends Component {
       <View>
         {this.state.loading ?
           ( <View>
-              <Text> Loading Users with Similar Interests for {this.state.interest}...</Text>
+              <Text> Loading Users with Similar Interests...</Text>
             </View>
           ):
           (
-            <View>
-              <Text> {this.state.usersWithSimilarInterests} </Text>
-            </View>
+            this.state.usersWithSimilarInterests.map((item, key) => {
+              return(<View>
+                <Text> {item.name} </Text>
+                <ImageComponent userId={item.userId}/>
+              </View>)
+            })
           )
         }
       </View>

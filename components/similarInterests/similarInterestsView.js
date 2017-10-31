@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { Text, View} from 'react-native';
 import InterestCard from './InterestCard.js';
-
+import * as firebase from "firebase";
 
 export default class SimilarInterestsLayout extends Component {
   constructor(props){
     super(props);
     this.state = {
-      userId: this.props.userId,
+      userId: firebase.auth().currentUser,
       interestArray: [],
       loading: true
     }
   }
 
   componentWillMount(){
-    let interests = ["guitar", "coding", "sports"]
+    // holds user info: uid & email
+    const interests = ["Sports"]
+  // access database very especific: Luis_Users node
+    let ref =  firebase.database().ref('Luis_Users');
 
     var rand = Math.round(Math.random() * (1000 - 500)) + 500;
 
@@ -29,7 +32,7 @@ export default class SimilarInterestsLayout extends Component {
 
 
   render(){
-    
+
     return(
       <View>
         {
