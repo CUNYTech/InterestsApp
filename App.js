@@ -1,17 +1,6 @@
 // NOTE: LOGIN AND LoginForm ARE NOT USE FOR THIS PROJECT
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  KeyboardAvoidingView,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  Button,
-  StatusBar
-} from 'react-native';
+import { Platform, StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Alert, Button, StatusBar} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 
