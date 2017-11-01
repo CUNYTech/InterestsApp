@@ -1,26 +1,59 @@
+/******************************************************************************
+Title           : listOfSimilarUsers.js
+Author          : Alfonso Enriquez
+Description     : Generates a list of users with an interest provided as a prop.
+Exports         : ListOfSimilarUsers
+Child Components: ImageComponent
+******************************************************************************/
+
+/******************************************************************************
+  Libraries
+******************************************************************************/
+
 import React, { Component } from 'react';
 import { Image} from 'react-native';
 import { Content, Card, CardItem, Spinner, Text, Right, Left, Icon} from 'native-base';
 import * as firebase from "firebase";
 
+
+/******************************************************************************
+  ImageComponent Class Declaration
+  @USE-CASE: passing a user-id obtain that users image. If id is not in store, return 'astronaut.png'.
+******************************************************************************/
+
 class ImageComponent extends Component{
+
+  /******************************************************************************
+  Navigation and Constructor
+  ******************************************************************************/
+  //@userId: inherited as a prop, searches image for that userId
+  //@imageUrl: url for an
+  //@exists: in case image doesn't exist in firebase storage
+  //@loading: for loading purposes while a call is being made to firebase
+
   constructor(props){
     super(props);
     this.state = {
       userId: this.props.userId,
-      image: '',
+      imageUrl: '',
       exists: true,
       loading: true
     }
   }
+  /******************************************************************************
+    Function definitions
+  ******************************************************************************/
+
+  //@Title: componentWillMount
+  //@Description: Fetches image from firebase storage by looking with user id, if non-existent, setState.exists to false
+  //@Postcondition: imageUrl is updated with downloadUrl
 
   componentWillMount(){
-
     firebase.storage().ref()
       .child('images/'+ this.state.userId + '/profilePicture.jpg').getDownloadURL()
         .then((url) => {
           this.setState({
-            image: url,
+            imageUrl: url,
             loading: false,
             exists: true
           })
@@ -33,6 +66,13 @@ class ImageComponent extends Component{
         })
       }
 
+    /******************************************************************************
+      Render
+    ******************************************************************************/
+    //@Title: Render
+    //@Description: Renders a loading button during componentWillMount. Render an image.
+    //@Postcondition: Image is either's users or if in inexistent astronaunt.png
+
   render(){
     return(
       <Content>
@@ -43,7 +83,7 @@ class ImageComponent extends Component{
           </Content>
         ):(
             this.state.exists ? (
-              <Content><Image style={{width: 40, height: 40}} source={{uri: this.state.image}} /></Content>
+              <Content><Image style={{width: 40, height: 40}} source={{uri: this.state.imageUrl}} /></Content>
             ):(
               <Content><Image style={{width: 40, height: 40}} source={require('../../images/astronaut.png')} /></Content>
             )
@@ -54,40 +94,66 @@ class ImageComponent extends Component{
   }
 }
 
+/******************************************************************************
+  ListOfSimilarUsers Class Declaration
+  @USE-CASE: renders a list of users based on their used id.
+******************************************************************************/
 
 export default class ListOfSimilarUsers extends Component {
+
+  /******************************************************************************
+  Navigation and Constructor
+  ******************************************************************************/
+  //@interest: to fetch all users with that same interest
+  //@usersWithSimilarInterests: to store users with that same interest
+  //@loading: for loading purposes while a call is being made to firebase
   constructor(props){
     super(props);
     this.state = {
-      userId: firebase.auth().currentUser,
       interest: this.props.interest,
       usersWithSimilarInterests: [],
       loading: true
     }
   }
 
+  /******************************************************************************
+    Function definitions
+  ******************************************************************************/
+
+  //@Title: componentWillMount
+  //@Description: Iterate through an of usersWithSimilarInterests to make api calls to Firabse and get their information.
+  //@Postcondition: Stores user OBJECTS from information and change the state of usersWithSimilarInterests.
   componentWillMount(){
     let usersWithSimilarInterests = []
 
-    this.props.similarUsersIds.forEach((userId) => {
+    this.props.usersWithSimilarInterests.forEach((userId) => {
       let objectUser = {}
       const id = userId
       firebase.database().ref('Luis_Users/' + userId).ref.on('value', (snapshot) => {
-      //   // is getting every snapshot from  Luis_Users
         objectUser = snapshot.val()
         objectUser.userId = id
         usersWithSimilarInterests.push(objectUser)
       });
     })
 
+    // THIS NEEDS TO GET FIXED
+    // @Issue: setState is currently being set after a timeout.
+    // @Solution: setState should be set after usersIdsWithSimilarInterests has been updated.
     setTimeout(() => {
       this.setState({
         usersWithSimilarInterests: usersWithSimilarInterests,
         loading: false
       })
-    }, 3000);
+    }, 2000);
   }
 
+  //@Title: Render
+  //@Description: Renders a list of users with image and name.
+  //@Postcondition: Renders a loading button while information is being fetched from db. Upon success, it iterates through loggedInUsersInterests and passes its element as a prop to InterestCard.
+
+  // OPTIMIZATION
+  // @Issue: static cards
+  // @Solution: a card should lead you that user's profile
   render(){
     return(
       <Content>

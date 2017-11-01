@@ -20,19 +20,33 @@ import * as firebase from "firebase";
 ******************************************************************************/
 
 export default class InterestCard extends Component {
+
+  /******************************************************************************
+    Navigation and Constructor
+  ******************************************************************************/
+  //@interest: inherited as a prop
+  //@usersIdsWithSimilarInterests: this variables stores all of the userIds with similar interest.
+  //@loading: for loading purposes while a call is being made to firebase
+
   constructor(props){
     super(props);
     this.state = {
-      userId: firebase.auth().currentUser,
       interest: this.props.interest,
-      usersWithSimilarInterests: [],
+      usersIdsWithSimilarInterests: [],
       loading: true
     }
   }
 
+  /******************************************************************************
+    Function definitions
+  ******************************************************************************/
+
+  //@Title: componentWillMount
+  //@Description: Fetches information from firebase to populate an array with users with the same interest. Pushes each "childSnapshot" unto responseActivity.
+  //@Postcondition: Returns an array of users ids stored on usersIdsWithSimilarInterests that match with the Logged In User's id.
+
   componentWillMount(){
     let ref =  firebase.database().ref('Luis_Activities/' + this.state.interest);
-
     let responseActivity = [];
 
     ref.on('value', (snapshot) => {
@@ -42,11 +56,19 @@ export default class InterestCard extends Component {
       });
 
       this.setState({
-        usersWithSimilarInterests: responseActivity,
+        usersIdsWithSimilarInterests: responseActivity,
         loading: false
       })
     })
   }
+
+  /******************************************************************************
+    Render
+  ******************************************************************************/
+
+  //@Title: Render
+  //@Description: Renders a loading button while information is being fetched from db. Upon success, it passes usersIdsWithSimilarInterests as a prop to ListOfSimilarUsers
+  //@Postcondition: Once state.loading is false, render ListOfSimilarUsers.
 
   render(){
     return(
@@ -65,7 +87,7 @@ export default class InterestCard extends Component {
                 <CardItem header>
                   <Text>{this.state.interest} </Text>
                 </CardItem>
-                <ListOfSimilarUsers similarUsersIds={this.state.usersWithSimilarInterests}/>
+                <ListOfSimilarUsers usersWithSimilarInterests={this.state.usersIdsWithSimilarInterests}/>
               </Card>
             </Content>
           )

@@ -29,7 +29,7 @@ export default class SimilarInterestsLayout extends Component {
 
   //@title: renders the title for the Header Page
   static navigationOptions = ({ navigation }) => ({
-    title: 'Similar Interests',
+    title: 'Users based by Interests',
   });
 
   //@loggedInUserId: this id represents the Logged In users' firebase id.
@@ -49,12 +49,8 @@ export default class SimilarInterestsLayout extends Component {
   ******************************************************************************/
 
   //@Title: componentWillMount
-
-  //@Description: Fetches information from firebase to populate the Logged In User's interests.
-  //              Information fetched from firebase is stored on responseActivity.
-
-  //@Postcondition: Returns an array of interests that match with the Logged In User's id.
-  //                Sets the state of loading to false and loggedInUsersInterests to responseActivity.
+  //@Description: Fetches information from firebase to populate the Logged In User's interests. Information fetched from firebase is stored on responseActivity.
+  //@Postcondition: Returns an array of interests that match with the Logged In User's id.Sets the state of loading to false and loggedInUsersInterests to responseActivity.
 
   componentWillMount(){
 
@@ -76,9 +72,7 @@ export default class SimilarInterestsLayout extends Component {
   ******************************************************************************/
 
   //@Title: Render
-  //@Description: Renders a loading button while information is being fetched from db.
-  //              Upon success, it passes loggedInUsersInterests as a prop to InterestCard.
-
+  //@Description: Renders a loading button while information is being fetched from db. Upon success, it iterates through loggedInUsersInterests and passes its element as a prop to InterestCard.
   //@Postcondition: Once state.loading is false, render InterestCard.
 
   render(){
