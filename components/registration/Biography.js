@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Button ,StyleSheet} from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Firebase from "../login/Firebase";
+import Firebase from "../../utils/Firebase.js";
 import * as firebase from "firebase";
 
 class UselessTextInput extends Component {
@@ -23,9 +23,9 @@ class UselessTextInput extends Component {
     );
   }
 }
- 
+
 export default class BiographyScreen extends Component {
-  
+
   static navigationOptions = {
     title: 'Biography',
   };
@@ -44,14 +44,14 @@ export default class BiographyScreen extends Component {
     const { navigate } = this.props.navigation;
     let user = firebase.auth().currentUser;
     // console.log('currentUser all info:', user)
-    
+
     if (user != null){
       var uid = user.uid;
     }
     console.log('uid is currentUser in Biography*****:', uid)
 
     let ref = firebase.database().ref(uid);
-    
+
     //writes data to Firebase
     // ref.set({
     //   bio: this.state.text
@@ -67,7 +67,7 @@ export default class BiographyScreen extends Component {
     updates['/users/' + uid + '/userName'] = this.state.userName;
     firebase.database().ref().update(updates);
     let runThis = () => navigate('ImageUpload');
-        runThis();   
+        runThis();
   }
 
 
@@ -118,7 +118,7 @@ export default class BiographyScreen extends Component {
                />
             </View>
 
-            
+
 
             <TouchableOpacity style={styles.buttonContainer} onPress={() => this.handlePress()} >
                 <Text  style={styles.buttonText}>NEXT</Text>
@@ -152,6 +152,3 @@ const styles = StyleSheet.create({
         paddingBottom:10
     },
 });
-
-
-

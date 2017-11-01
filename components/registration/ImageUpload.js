@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { 
+import {
   Platform,
   StyleSheet,
   Text,
@@ -7,19 +7,19 @@ import {
   ActivityIndicator,
   TextInput,
   TouchableOpacity,
-  Alert, 
+  Alert,
   Button,
-  Image 
+  Image
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Firebase from "../login/Firebase";
+import Firebase from "../../utils/Firebase.js";
 import * as firebase from "firebase";
 import RNFetchBlob from 'react-native-fetch-blob'
 import ImagePicker from 'react-native-image-crop-picker'
 
 
 export default class ImageUploadScreen extends Component {
-  
+
   static navigationOptions = {
     title: 'ImageUpload',
   };
@@ -44,7 +44,7 @@ export default class ImageUploadScreen extends Component {
     const fs = RNFetchBlob.fs
     window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
     window.Blob = Blob
-    
+
     // const uid = "12345"
     const uid = user.uid;
     ImagePicker.openPicker({
@@ -142,5 +142,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-

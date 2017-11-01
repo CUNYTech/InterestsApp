@@ -1,8 +1,8 @@
 /******************************************************************************
-Title           : InterestCard.js
+Title           : interestCardList.js
 Author          : Alfonso Enriquez
 Description     : Generates a list of users with an interest provided as a prop.
-Exports         : InterestCard
+Exports         : InterestCardList
 Child Components: ListOfSimilarUsers
 ******************************************************************************/
 
@@ -19,7 +19,7 @@ import * as firebase from "firebase";
   SimilarInterestsLayout Class Declaration
 ******************************************************************************/
 
-export default class InterestCard extends Component {
+export default class InterestCardList extends Component {
 
   /******************************************************************************
     Navigation and Constructor

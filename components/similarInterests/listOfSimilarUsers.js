@@ -121,18 +121,17 @@ export default class ListOfSimilarUsers extends Component {
   ******************************************************************************/
 
   //@Title: componentWillMount
-  //@Description: Iterate through an of usersWithSimilarInterests to make api calls to Firabse and get their information.
+  //@Description: Iterate through an of usersWithSimilarInterests to make api calls to Firebase and get their information. Promises are used to store all ids and then update state.
   //@Postcondition: Stores user OBJECTS from information and change the state of usersWithSimilarInterests.
   componentWillMount(){
     let usersWithSimilarInterests = []
+    let objectUser = {}
 
     let requests = this.props.usersWithSimilarInterests.map((userId) => {
       return new Promise((resolve) => {
-        let objectUser = {}
-        const id = userId
         firebase.database().ref('Luis_Users/' + userId).ref.on('value', (snapshot) => {
           objectUser = snapshot.val()
-          objectUser.userId = id
+          objectUser.userId = userId
           usersWithSimilarInterests.push(objectUser)
           resolve()
         });
@@ -146,8 +145,6 @@ export default class ListOfSimilarUsers extends Component {
       })
     );
   }
-
-
 
   //@Title: Render
   //@Description: Renders a list of users with image and name.

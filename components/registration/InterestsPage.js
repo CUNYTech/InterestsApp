@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Button ,StyleSheet ,StatusBar} from 'react-native';
 import CheckboxFormX from 'react-native-checkbox-form';
 import { StackNavigator } from 'react-navigation';
-import Firebase from "../login/Firebase";
+import Firebase from "../../utils/Firebase.js";
 import * as firebase from "firebase";
 
 const mockData = [
@@ -25,15 +25,15 @@ const mockData = [
     {
         label: 'Tech',
         value:  5
-    },    
+    },
 ];
- 
+
 export default class InterestsScreen extends Component {
   static navigationOptions = {
     title: 'Interest',
   };
 
-  constructor(props) {    
+  constructor(props) {
     super(props);
     this.state = {
       email: "",
@@ -44,7 +44,7 @@ export default class InterestsScreen extends Component {
 
 
 onSelect = (item) => {
-   
+
     // this.setState({
     //   Interest: [],
     // })
@@ -54,7 +54,7 @@ onSelect = (item) => {
         }
 
     })
-    console.log("helllo:", this.state.Interest); 
+    console.log("helllo:", this.state.Interest);
 };
 
 
@@ -83,22 +83,22 @@ onSelect = (item) => {
     // let user = firebase.auth().currentUser;
     // if (user != null){
     //   var uid = user.uid;
-    // } 
+    // }
 
     // let ref = firebase.database().ref("users");
     // ref.set({
     //   Interest: this.state.Interest,
-    // });   
+    // });
 
     let runThis = () => navigate('Biography');
-    runThis(); 
+    runThis();
   }
 
   render() {
     const { navigate } = this.props.navigation;
       return (
         <View style={styles.container}>
-        
+
           <Text style={styles.title}>INTEREST</Text>
           <Text style={styles.title}>Choose at least 3 topics:</Text>
           <View style={styles.CheckboxFormX} >

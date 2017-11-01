@@ -14,7 +14,7 @@ import React, { Component } from 'react';
 import {Container, Content, Spinner, Text, StyleProvider, H1 } from 'native-base';
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
-import InterestCard from './InterestCard.js';
+import InterestCardList from './interestCardList.js';
 import * as firebase from "firebase";
 
 /******************************************************************************
@@ -96,7 +96,7 @@ export default class SimilarInterestsLayout extends Component {
                 this.state.loggedInUsersInterests.map((interest, key) => {
                   return(
                     <Content key={key}>
-                      <InterestCard interest={interest}/>
+                      <InterestCardList interest={interest}/>
                     </Content>)
                 })
               }
