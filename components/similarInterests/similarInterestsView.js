@@ -53,7 +53,7 @@ export default class SimilarInterestsLayout extends Component {
   //@Postcondition: Returns an array of interests that match with the Logged In User's id.Sets the state of loading to false and loggedInUsersInterests to responseActivity.
 
   componentWillMount(){
-
+    
     let responseActivity = []
 
     firebase.database().ref('Luis_Activities').on('value', (snapshot) => {

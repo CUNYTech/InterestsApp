@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Alert, Button, StatusBar} from 'react-native';
-import { Content, Card, CardItem, Spinner, Text, Right } from 'native-base';
+
+import { KeyboardAvoidingView, Alert, StatusBar} from 'react-native';
+import { Container, StyleProvider, Header, Content, Text, Form, Item, Input, Label, Button} from 'native-base';
+import getTheme from '../../native-base-theme/components';
+import material from '../../native-base-theme/variables/material';
 import firebase from "firebase";
+
+
+
+
+
+
+
 
 export default class LoginFormScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -60,88 +70,49 @@ export default class LoginFormScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
+
     return (
-      <View style={styles.container}>
-            <Button onPress={() => navigate('Interest')} title="INTEREST PAGE" />
-            <TextInput style = {styles.input}
-                        autoCapitalize="none"
-                        onSubmitEditing={() => this.passwordInput.focus()}
-                        autoCorrect={false}
-                        keyboardType='email-address'
-                        returnKeyType="next"
-                        placeholder='Email or Mobile Num'
-                        onChangeText ={(email) => this.setState({email})}
-                        placeholderTextColor='rgba(225,225,225,0.7)'/>
+    <StyleProvider style={getTheme(material)}>
+      <Container>
 
-            <TextInput style = {styles.input}
-                       returnKeyType="go" ref={(input)=> this.passwordInput = input}
-                       placeholder='Password'
-                       onChangeText ={(password) => this.setState({password})}
-                       placeholderTextColor='rgba(225,225,225,0.7)'
-                       secureTextEntry/>
-          <TouchableOpacity style={styles.buttonContainer} onPress={this.signup}>
-                <Text  style={styles.buttonTextSignUp}>Signup</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonContainer} onPress={this.login}>
-                <Text  style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
+        <Form>
 
-            <TouchableOpacity style={styles.buttonContainerGo}  onPress={() => navigate('Interest')}>
-                <Text  style={styles.buttonText}>GO TO INTEREST PAGE</Text>
-            </TouchableOpacity>
-{/*FOR DEVELOPMENT PURPOSES*/}
-            <TouchableOpacity style={styles.buttonContainerGo}  onPress={() => navigate('similarInterests')}>
-                <Text  style={styles.buttonText}>GO TO SIMILAR ITERESTS PAGE</Text>
-            </TouchableOpacity>
-      </View>
+          <Item floatingLabel style={{"marginBottom":"2%"}}>
+            <Label>Username</Label>
+            <Input  autoCapitalize="none"
+                    onChangeText ={(email) => this.setState({email})} />
+          </Item>
+        
+          <Item floatingLabel last style={{"marginBottom":"2%"}}>
+            <Label>Password</Label>
+            <Input  autoCapitalize="none"
+                    secureTextEntry={true}
+                    onChangeText ={(password) => this.setState({password})}/>
+          </Item>
+
+          <Button onPress={this.signup}
+                  block primary style={{"marginTop":"2%", "marginBottom":"2%"}}>
+            <Text>Signup</Text>
+          </Button>
+
+          <Button onPress={this.login}
+                  bordered block primary style={{"padding":"2%", "marginBottom":"10%"}}>
+            <Text>Login</Text>
+          </Button>
+
+        </Form>
+
+        <Container style={{  "flexDirection": "row",
+                        "justifyContent": "center",
+                        "alignItems": 'center'}}>
+          <Button onPress={() => navigate('SimilarInterests')}
+                  rounded light>
+            <Text>Skip Login</Text>
+          </Button>
+        </Container>
+
+      </Container>
+    </StyleProvider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#3498db',
-    },
-    input:{
-        height: 40,
-        backgroundColor: 'rgba(225,225,225,0.2)',
-        marginBottom: 10,
-        padding: 10,
-        color: '#fff'
-    },
-    buttonContainer:{
-        backgroundColor: '#2980b6',
-        paddingVertical: 15,
-        marginBottom: 5,
-    },
-    buttonContainerGo:{
-        backgroundColor: '#06b3e2',
-        paddingVertical: 15,
-        marginBottom: 5,
-    },
-    buttonText:{
-        color: '#fff',
-        textAlign: 'center',
-        // fontWeight: '700',
-        paddingBottom:10
-    },
-    buttonTextSignUp:{
-        color: 'orange',
-        textAlign: 'center',
-        // fontWeight: '700',
-        paddingBottom:10
-    },
-
-    loginButton:{
-      backgroundColor:  '#2980b6',
-       color: '#fff'
-    },
-    title:{
-      alignItems: 'center',
-      flexGrow: 1,
-      justifyContent: 'center'
-
-  }
-
-});

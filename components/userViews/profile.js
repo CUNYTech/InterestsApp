@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View} from 'react-native';
-import Firebase from "../login/Firebase";
 import * as firebase from "firebase";
 
-alfonso = {
-  userName: "Alfonso",
-  bio: "i like components",
-  interests: ['coding', 'lounging']
-}
 
-kevUserId = "jtnAkFHYrieKZ93N7Kf8OJdEx4Y2"
 
 function UserInformation(props) {
     return(
       <View>
         <Text> {props.user.userName} </Text>
+        <Text> {props.user.bio} </Text>
       </View>
     )
   }
@@ -23,22 +17,17 @@ export default class UserProfile extends Component{
   constructor(props){
     super(props);
     this.state = {
-        user: {},
+        userId: this.props.userId,
+        user: {}
         loading: true
       }
     }
 
     componentWillMount() {
-      let userArray = []
-      let dbUser = {}
-
-      firebase.database().ref("users/" + kevUserId).once('value').then((snapshot) => {
-          dbUser = snapshot.val()
-          console.log(dbUser)
-
+      firebase.database().ref("users/" + this.state.userId).once('value').then((snapshot) => {
           this.setState({
             loading: false,
-            user: dbUser
+            user: snapshot.val()
           })
         })
 
@@ -48,7 +37,13 @@ export default class UserProfile extends Component{
   render(){
     return(
       <View>
-        {this.state.loading === true ? <Text> Loading from Database... </Text> : (<UserInformation user={this.state.user}/>)}
+        { (this.state.loading === true) ? 
+            (
+              <Text> Loading from Database... </Text>
+              ):(
+              <UserInformation user={this.state.user}/>
+            )
+        }
         <UserInformation user={alfonso}/>
       </View>
     )

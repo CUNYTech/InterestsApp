@@ -11,6 +11,7 @@ import BiographyScreen from './components/registration/Biography';
 import ImageUploadScreen from './components/registration/ImageUpload';
 import LoginFormScreen from './components/login/LoginForm';
 import SimilarInterestsLayout from './components/similarInterests/similarInterestsView.js';
+import LoggedInScreen from './components/loggedIn/loggedInScreen.js';
 
 
 // routes takes components "acts like a navbar"
@@ -19,7 +20,8 @@ const SimpleApp = StackNavigator({
   Interest: { screen: InterestScreen },
   Biography: { screen: BiographyScreen },
   ImageUpload: { screen: ImageUploadScreen },
-  similarInterests: { screen: SimilarInterestsLayout },
+  SimilarInterests: { screen: SimilarInterestsLayout },
+  LoggedIn: { screen: LoggedInScreen }
 });
 
 
