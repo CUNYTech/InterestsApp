@@ -126,26 +126,28 @@ export default class ListOfSimilarUsers extends Component {
   componentWillMount(){
     let usersWithSimilarInterests = []
 
-    this.props.usersWithSimilarInterests.forEach((userId) => {
-      let objectUser = {}
-      const id = userId
-      firebase.database().ref('Luis_Users/' + userId).ref.on('value', (snapshot) => {
-        objectUser = snapshot.val()
-        objectUser.userId = id
-        usersWithSimilarInterests.push(objectUser)
-      });
+    let requests = this.props.usersWithSimilarInterests.map((userId) => {
+      return new Promise((resolve) => {
+        let objectUser = {}
+        const id = userId
+        firebase.database().ref('Luis_Users/' + userId).ref.on('value', (snapshot) => {
+          objectUser = snapshot.val()
+          objectUser.userId = id
+          usersWithSimilarInterests.push(objectUser)
+          resolve()
+        });
+      })
     })
 
-    // THIS NEEDS TO GET FIXED
-    // @Issue: setState is currently being set after a timeout.
-    // @Solution: setState should be set after usersIdsWithSimilarInterests has been updated.
-    setTimeout(() => {
+    Promise.all(requests).then(() =>
       this.setState({
         usersWithSimilarInterests: usersWithSimilarInterests,
         loading: false
       })
-    }, 2000);
+    );
   }
+
+
 
   //@Title: Render
   //@Description: Renders a list of users with image and name.
