@@ -13,18 +13,19 @@ export default class LoggedInScreen extends Component {
 
         <Footer>
           <FooterTab>
-            <Button>
-              <Text>Apps</Text>
-            </Button>
+
             <Button>
               <Text>Camera</Text>
             </Button>
+
             <Button active>
               <Text>Navigate</Text>
             </Button>
+
             <Button>
               <Text>Contact</Text>
             </Button>
+            
           </FooterTab>
         </Footer>
       </Container>
