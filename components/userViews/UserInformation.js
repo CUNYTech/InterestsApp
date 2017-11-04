@@ -20,7 +20,6 @@ import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left
   //@Title: UserInformation
   //@Description: Gets props from UserProfile class and returns jsx elememts that UserProfile renders
 export default function UserInformation(props) {
-  console.log('props.image:', props.image)
     return(
       <View>
 
@@ -32,11 +31,13 @@ export default function UserInformation(props) {
         { (props.image) ? 
           (<Right>
             <Thumbnail large source={{uri: props.image}} style={{ marginTop: -140}} />
-          </Right>)  : <Text>Loading ...</Text>
+          </Right>)  :   (<Right>
+            <Thumbnail large source={require('../../images/astronaut.png')} style={{ marginTop: -140}} />
+          </Right>)  
         }
 
         <Right>
-          <Text style={{ marginTop: -50, textAlign:'center', fontWeight:'bold', fontSize: 18, width: 200, backgroundColor: 'white'}}>{props.user.userName} {"\n"} NYC</Text>
+          <Text style={{ marginTop: -50, textAlign:'center', fontWeight:'bold', fontSize: 18, width: 200, backgroundColor: 'white'}}>{props.user.name} {"\n"} NYC</Text>
         </Right>
 
 
@@ -59,7 +60,7 @@ export default function UserInformation(props) {
         <CardItem>
           <Body>
             <H3 >About me</H3>
-            <Text style={{textAlign:'justify'}}> {props.user.bio} </Text>
+            <Text style={{textAlign:'justify'}}> {props.user.Bio} </Text>
           </Body>
         </CardItem>
 

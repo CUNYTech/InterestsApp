@@ -68,7 +68,7 @@ export default class UserProfile extends Component{
         })
       
 
-      firebase.database().ref("users/" + currentUserUserId).once('value').then((snapshot) => {
+      firebase.database().ref("Luis_Users/" + currentUserUserId).once('value').then((snapshot) => {
           this.setState({
             loading: false,
             user: snapshot.val()
