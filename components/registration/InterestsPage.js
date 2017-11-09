@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Button ,StyleSheet ,StatusBar} from 'react-native';
 import CheckboxFormX from 'react-native-checkbox-form';
 import { StackNavigator } from 'react-navigation';
-import Firebase from "../../utils/Firebase.js";
+import firebase from "../../utils/firebase.js";
 import * as firebase from "firebase";
 
 const mockData = [

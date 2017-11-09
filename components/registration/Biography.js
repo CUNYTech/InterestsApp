@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, Button ,StyleSheet} from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Firebase from "../../utils/Firebase.js";
+import Firebase from "../../utils/firebase.js";
 import * as firebase from "firebase";
 
 class UselessTextInput extends Component {

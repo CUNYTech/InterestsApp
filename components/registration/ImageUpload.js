@@ -12,7 +12,7 @@ import {
   Image
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Firebase from "../../utils/Firebase.js";
+import Firebase from "../../utils/firebase.js";
 import * as firebase from "firebase";
 import RNFetchBlob from 'react-native-fetch-blob'
 import ImagePicker from 'react-native-image-crop-picker'
