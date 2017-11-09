@@ -18,7 +18,7 @@ export default class UserProfile extends Component{
     super(props);
     this.state = {
         userId: this.props.userId,
-        user: {}
+        user: {},
         loading: true
       }
     }

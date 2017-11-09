@@ -6,17 +6,23 @@ import {
   Container,
   List,
   ListItem,
-  Content
+  Content,
+  Header,
+  Left,
+  Right,
+  Icon, 
+  Body,
+  Title
 
 } from "native-base";
-import LoggedInScreen from '../../components/loggedIn/loggedInScreen.js';
+import UserProfile from '../../components/userViews/profile.js';
 import SimilarInterestsLayout from '../../components/similarInterests/similarInterestsView.js';
 import { StackNavigator } from 'react-navigation';
 
 
 
 const routes = StackNavigator({
-  Home: { screen: LoggedInScreen},
+  Home: { screen: UserProfile},
   //SimilarInterests: { screen: SimilarInterestsLayout}, 
 });
 
@@ -24,7 +30,19 @@ export default class SideBar extends React.Component {
   render() {
     return (
       <Container>
-    
+     <Header>
+          <Left>
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+              <Icon name="menu" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>HomeScreen</Title>
+          </Body>
+          <Right />
+     </Header>
         <Content>
           <Image
             source={{

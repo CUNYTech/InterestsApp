@@ -93,21 +93,8 @@ export default class SimilarInterestsLayout extends Component {
     return(
       <StyleProvider style={getTheme(material)}>
       <Container>    
-        <SideBar /> 
-        <Header>
-          <Right>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-              <Icon name="menu" />
-            </Button>
-          
-          <Body>
-            <Title>HomeScreen</Title>
-          </Body>
-          </Right>
-        </Header>
-
+        
+        
         {
              this.state.loading ? (
             <Content>

@@ -6,13 +6,6 @@ import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 import firebase from "firebase";
 
-
-
-
-
-
-
-
 export default class LoginFormScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'LoginForm',
@@ -108,6 +101,16 @@ export default class LoginFormScreen extends Component {
           <Button onPress={() => navigate('SimilarInterests')}
                   rounded light>
             <Text>Skip Login</Text>
+          </Button>
+        </Container>
+
+
+        <Container style={{  "flexDirection": "row",
+                        "justifyContent": "center",
+                        "alignItems": 'center'}}>
+          <Button nPress={() => .navigate("DrawerOpen")}
+                  rounded light>
+            <Text>Skip x</Text>
           </Button>
         </Container>
 
