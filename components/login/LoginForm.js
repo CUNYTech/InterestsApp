@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { KeyboardAvoidingView, Alert, StatusBar} from 'react-native';
-import { Container, StyleProvider, Header, Content, Text, Form, Item, Input, Label, Button} from 'native-base';
+import { Container, StyleProvider, Header, Content, Text, Form, Item, Input, Label, Button, Drawer} from 'native-base';
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 import firebase from "firebase";
@@ -108,7 +108,7 @@ export default class LoginFormScreen extends Component {
         <Container style={{  "flexDirection": "row",
                         "justifyContent": "center",
                         "alignItems": 'center'}}>
-          <Button nPress={() => .navigate("DrawerOpen")}
+          <Button nPress={() => navigate("DrawerOpen")}
                   rounded light>
             <Text>Skip x</Text>
           </Button>

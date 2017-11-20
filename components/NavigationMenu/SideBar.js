@@ -1,5 +1,6 @@
-import React from "react";
-import { AppRegistry, Image, StatusBar } from "react-native";
+
+import React, { Component } from 'react';
+import { AppRegistry, Image, StatusBar, StyleSheet, View } from "react-native";
 import {
   Button,
   Text,
@@ -13,72 +14,64 @@ import {
   Icon, 
   Body,
   Title
-
 } from "native-base";
 import UserProfile from '../../components/userViews/profile.js';
 import SimilarInterestsLayout from '../../components/similarInterests/similarInterestsView.js';
+import InterestScreen from '../../components/registration/InterestsPage';
+import BiographyScreen from '../../components/registration/Biography';
+import ImageUploadScreen from '../../components/registration/ImageUpload';
+import LoggedInScreen from '../../components/loggedIn/loggedInScreen.js';
+
 import { StackNavigator } from 'react-navigation';
 
 
 
-const routes = StackNavigator({
-  Home: { screen: UserProfile},
-  //SimilarInterests: { screen: SimilarInterestsLayout}, 
-});
 
-export default class SideBar extends React.Component {
-  render() {
-    return (
-      <Container>
-     <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>HomeScreen</Title>
-          </Body>
-          <Right />
-     </Header>
-        <Content>
-          <Image
-            source={{
-              uri: "https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/drawer-cover.png"
-            }}
-            style={{
-              height: 120,
-              alignSelf: "stretch",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <Image
-              square
-              style={{ height: 80, width: 70 }}
-              source={{
-                uri: "https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/logo.png"
-              }}
-            />
-          </Image>
-          <List
-            dataArray={routes}
-            renderRow={data => {
-              return (
-                <ListItem
-                  button
-                  onPress={() => this.props.navigation.navigate(data)}
-                >
-                  <Text>{data}</Text>
-                </ListItem>
-              );
-            }}
-          />
-        </Content>
-      </Container>
+
+export default class SideBar extends Component {
+ static navigationOptions= ({navigation}) =>({
+      title: 'Side Menu', 
+  });  
+  
+  render(){
+    const { navigate } = this.props.navigation;
+    return(
+    <View>   
+      <Text style={styles.pageName}>Menu </Text>
+    <Button onPress={() => navigate('SimilarInterests')}
+                  rounded light>
+            <Text>Similar Interests</Text>
+    </Button>
+
+    <Button onPress={() => navigate('BiographyScreen')}
+                  rounded light>
+            <Text>Biography</Text>
+    </Button>
+    
+    <Button onPress={() => navigate('ImageUploadScreen')}
+                  rounded light>
+            <Text>Image Upload</Text>
+    </Button>
+     
+     <Button onPress={() => navigate('LoggedInScreen')}
+                  rounded light>
+            <Text>LoggedIn</Text>
+    </Button>
+
+    <Button onPress={() => navigate('SimilarInterestsLayout')}
+                  rounded light>
+            <Text>SimilarInterestsLayout</Text>
+    </Button>
+
+      </View>
     );
   }
 }
-
+const styles = StyleSheet.create({
+  pageName:{
+    margin:10,
+    fontWeight:'bold',
+    color:'#000',
+    textAlign:'center'
+  },
+});

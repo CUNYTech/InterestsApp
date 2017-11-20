@@ -16,13 +16,14 @@ import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 import InterestCardList from './interestCardList.js';
 import * as firebase from "firebase";
-import Drawer from 'react-native-drawer';
+//import Drawer from 'react-native-drawer';
 import SideBar from '../NavigationMenu/SideBar.js';
+import { Drawer } from 'native-base';
 
 /******************************************************************************
   SimilarInterestsLayout Class Declaration
 ******************************************************************************/
-
+const SideMenu = require('react-native-side-menu');
 export default class SimilarInterestsLayout extends Component {
 
   /******************************************************************************
@@ -79,6 +80,9 @@ export default class SimilarInterestsLayout extends Component {
       })
     })
   }
+ 
+   
+
 
   /******************************************************************************
     Render
@@ -87,6 +91,7 @@ export default class SimilarInterestsLayout extends Component {
   //@Title: Render
   //@Description: Renders a loading button while information is being fetched from db. Upon success, it iterates through loggedInUsersInterests and passes its element as a prop to InterestCard.
   //@Postcondition: Once state.loading is false, render InterestCard.
+
 
   render(){
 
