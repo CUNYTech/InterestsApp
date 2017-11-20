@@ -23,7 +23,7 @@ import { Drawer } from 'native-base';
 /******************************************************************************
   SimilarInterestsLayout Class Declaration
 ******************************************************************************/
-const SideMenu = require('react-native-side-menu');
+
 export default class SimilarInterestsLayout extends Component {
 
   /******************************************************************************

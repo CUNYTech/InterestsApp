@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert, Button ,StyleSheet} fro
 import { StackNavigator } from 'react-navigation';
 import Firebase from "../../utils/firebase.js";
 import * as firebase from "firebase";
+import SideBar from '../NavigationMenu/SideBar.js'
 
 class UselessTextInput extends Component {
    constructor(props) {

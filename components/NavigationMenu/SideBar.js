@@ -17,9 +17,9 @@ import {
 } from "native-base";
 import UserProfile from '../../components/userViews/profile.js';
 import SimilarInterestsLayout from '../../components/similarInterests/similarInterestsView.js';
-import InterestScreen from '../../components/registration/InterestsPage';
-import BiographyScreen from '../../components/registration/Biography';
-import ImageUploadScreen from '../../components/registration/ImageUpload';
+import InterestScreen from '../../components/registration/InterestsPage.js';
+import BiographyScreen from '../../components/registration/Biography.js';
+import ImageUploadScreen from '../../components/registration/ImageUpload.js';
 import LoggedInScreen from '../../components/loggedIn/loggedInScreen.js';
 
 import { StackNavigator } from 'react-navigation';
@@ -31,7 +31,26 @@ import { StackNavigator } from 'react-navigation';
 export default class SideBar extends Component {
  static navigationOptions= ({navigation}) =>({
       title: 'Side Menu', 
+      // title: 'Biography',
   });  
+  
+ //pass down props and set up states
+ constructor(props) {
+    super(props);
+    this.state = {
+        bio: '',
+    };
+
+    this.handlePress = this.handlePress.bind(this);
+  } 
+
+ //define handler 
+  handlePress() {
+    const { navigate } = this.props.navigation;
+    let runThis = () => navigate('BiographyScreen');
+        runThis();
+  }
+
   
   render(){
     const { navigate } = this.props.navigation;
@@ -42,13 +61,13 @@ export default class SideBar extends Component {
                   rounded light>
             <Text>Similar Interests</Text>
     </Button>
-
-    <Button onPress={() => navigate('BiographyScreen')}
+    
+    <Button onPress={() => navigate('BiographyScreen')} 
                   rounded light>
             <Text>Biography</Text>
     </Button>
     
-    <Button onPress={() => navigate('ImageUploadScreen')}
+    <Button onPress={() => this.handlePress('ImageUploadScreen')} //edited
                   rounded light>
             <Text>Image Upload</Text>
     </Button>
