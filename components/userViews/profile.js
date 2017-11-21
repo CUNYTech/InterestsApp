@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Text, View} from 'react-native';
 import * as firebase from "firebase";
 
-
-
 function UserInformation(props) {
     return(
       <View>

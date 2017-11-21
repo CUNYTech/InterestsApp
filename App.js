@@ -16,7 +16,7 @@ import UserProfile from './components/userViews/profile.js';
 import SideBar from './components/NavigationMenu/SideBar.js';
 
 const myDrawer = DrawerNavigator({
-	//Home: { screen: UserProfile },
+	UserProfile: { screen: UserProfile },
 	Interest: { screen: InterestScreen },
     Biography: { screen: BiographyScreen },
     ImageUpload: { screen: ImageUploadScreen },

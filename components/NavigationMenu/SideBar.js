@@ -1,4 +1,14 @@
+/******************************************************************************
+Title           : SideBar.js
+Author          : Kevin Mei
+Description     : A side menu with buttons to navigate to liste of interest, Bio, and Image Load page (user profile TBD)
+Exports         : SideBar View
+Child Components: InterestScreen, BiographyScreen, and ImageUploadScreen
+******************************************************************************/
 
+/******************************************************************************
+  Libraries
+******************************************************************************/
 import React, { Component } from 'react';
 import { AppRegistry, Image, StatusBar, StyleSheet, View } from "react-native";
 import {
@@ -25,64 +35,48 @@ import LoggedInScreen from '../../components/loggedIn/loggedInScreen.js';
 import { StackNavigator } from 'react-navigation';
 
 
-
-
-
+/******************************************************************************
+  SideBar Class Declaration
+******************************************************************************/
 export default class SideBar extends Component {
  static navigationOptions= ({navigation}) =>({
       title: 'Side Menu', 
-      // title: 'Biography',
+
   });  
   
- //pass down props and set up states
- constructor(props) {
-    super(props);
-    this.state = {
-        bio: '',
-    };
+ /******************************************************************************
+    Render
+  ******************************************************************************/
 
-    this.handlePress = this.handlePress.bind(this);
-  } 
-
- //define handler 
-  handlePress() {
-    const { navigate } = this.props.navigation;
-    let runThis = () => navigate('BiographyScreen');
-        runThis();
-  }
-
-  
+  //@Title: Render
+  //@Description: Renders three buttons for List of Interes Screen, Biography Screen, and Upload Image Screen so far.
+  //@Postcondition: Each button is onclick to navigate to the wanted Screen.
+  //@Ongoing: missing User Profile Button, will implment later
   render(){
+
     const { navigate } = this.props.navigation;
     return(
     <View>   
-      <Text style={styles.pageName}>Menu </Text>
-    <Button onPress={() => navigate('SimilarInterests')}
+      <Text style={styles.pageName}>Menu </Text>  
+
+    
+
+    <Button onPress={() => navigate('Interest')}
                   rounded light>
-            <Text>Similar Interests</Text>
+            <Text>Interest List</Text>
     </Button>
     
-    <Button onPress={() => navigate('BiographyScreen')} 
+    <Button onPress={() => navigate('Biography')} 
                   rounded light>
             <Text>Biography</Text>
     </Button>
     
-    <Button onPress={() => this.handlePress('ImageUploadScreen')} //edited
+    <Button onPress={() => navigate('ImageUpload')} 
                   rounded light>
             <Text>Image Upload</Text>
     </Button>
      
-     <Button onPress={() => navigate('LoggedInScreen')}
-                  rounded light>
-            <Text>LoggedIn</Text>
-    </Button>
-
-    <Button onPress={() => navigate('SimilarInterestsLayout')}
-                  rounded light>
-            <Text>SimilarInterestsLayout</Text>
-    </Button>
-
-      </View>
+    </View>
     );
   }
 }
