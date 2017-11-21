@@ -108,9 +108,14 @@ export default class LoginFormScreen extends Component {
         <Container style={{  "flexDirection": "row",
                         "justifyContent": "center",
                         "alignItems": 'center'}}>
-          <Button nPress={() => .navigate("DrawerOpen")}
+          <Button nPress={() => navigate("DrawerOpen")}
                   rounded light>
             <Text>Skip x</Text>
+          </Button>
+
+          <Button onPress={() => navigate('Setting')}
+                  rounded light>
+            <Text>Settings</Text>
           </Button>
         </Container>
 
