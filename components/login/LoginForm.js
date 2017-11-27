@@ -50,7 +50,7 @@ export default class LoginFormScreen extends Component {
             response: "Logged In!"
         });
         // console.log(this.state.response)
-        let runThis = () => navigate('Interest');
+        let runThis = () => navigate('SimilarInterests');
         runThis();
     } catch (error) {
         this.setState({
