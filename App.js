@@ -14,6 +14,8 @@ import SimilarInterestsLayout from './components/similarInterests/similarInteres
 import LoggedInScreen from './components/loggedIn/loggedInScreen.js';
 import UserProfile from './components/userViews/profile.js';
 import SideBar from './components/NavigationMenu/SideBar.js';
+import SettingScreen from './components/settings/setting.js';
+
 
 const myDrawer = DrawerNavigator({
 	UserProfile: { screen: UserProfile },
@@ -29,10 +31,14 @@ const myDrawer = DrawerNavigator({
 
 // routes takes components "acts like a navbar"
 const SimpleApp = StackNavigator({
-  
   LoginForm: { screen: LoginFormScreen },
   Home: { screen: myDrawer },
-  
+  Setting: { screen: SettingScreen},
+  Interest: { screen: InterestScreen },
+  Biography: { screen: BiographyScreen },
+  ImageUpload: { screen: ImageUploadScreen },
+  SimilarInterests: { screen: SimilarInterestsLayout },
+  LoggedIn: { screen: LoggedInScreen }
 });
 
 
