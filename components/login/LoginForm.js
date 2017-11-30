@@ -57,7 +57,7 @@ export default class LoginFormScreen extends Component {
             response: error.toString()
         })
     } finally {
-      alert(this.state.response);
+      //alert(this.state.response);
     }
   }
 
