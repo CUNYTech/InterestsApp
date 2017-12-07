@@ -15,6 +15,7 @@ import LoggedInScreen from './components/loggedIn/loggedInScreen.js';
 import UserProfile from './components/userViews/profile.js';
 import SideBar from './components/NavigationMenu/SideBar.js';
 import SettingScreen from './components/settings/setting.js';
+import Chat from './components/chat/chat.js';
 
 
 const myDrawer = DrawerNavigator({
@@ -24,6 +25,7 @@ const myDrawer = DrawerNavigator({
     ImageUpload: { screen: ImageUploadScreen },
     SimilarInterests: { screen: SimilarInterestsLayout },
     LoggedIn: { screen: LoggedInScreen },
+    Chat: { screen: Chat}
 },
 {
 	contentComponent: props => <SideBar {...props} />
