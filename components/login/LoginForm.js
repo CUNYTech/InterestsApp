@@ -117,6 +117,12 @@ export default class LoginFormScreen extends Component {
                   rounded light>
             <Text>Settings</Text>
           </Button>
+
+          <Button onPress={() => navigate('Chat')}
+                  rounded light>
+            <Text>Chat</Text>
+          </Button>
+
         </Container>
 
       </Container>

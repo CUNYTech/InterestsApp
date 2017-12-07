@@ -12,21 +12,20 @@ import ImageUploadScreen from './components/registration/ImageUpload';
 import LoginFormScreen from './components/login/LoginForm';
 import SimilarInterestsLayout from './components/similarInterests/similarInterestsView.js';
 import LoggedInScreen from './components/loggedIn/loggedInScreen.js';
-//import UserProfile from './components/userViews/profile.js';
+import UserProfile from './components/userViews/profile.js';
 import SideBar from './components/NavigationMenu/SideBar.js';
 import SettingScreen from './components/settings/setting.js';
+import Chat from './components/chat/chat.js';
 
 
 const myDrawer = DrawerNavigator({
-  //UserProfile: { screen: UserProfile },
-  LoginForm: { screen: LoginFormScreen },
+	UserProfile: { screen: UserProfile },
 	Interest: { screen: InterestScreen },
     Biography: { screen: BiographyScreen },
     ImageUpload: { screen: ImageUploadScreen },
     SimilarInterests: { screen: SimilarInterestsLayout },
     LoggedIn: { screen: LoggedInScreen },
-    //LoginForm: { screen: LoginFormScreen },
-    Setting: { screen: SettingScreen},
+    Chat: { screen: Chat}
 },
 {
 	contentComponent: props => <SideBar {...props} />
@@ -36,13 +35,12 @@ const myDrawer = DrawerNavigator({
 const SimpleApp = StackNavigator({
   LoginForm: { screen: LoginFormScreen },
   Home: { screen: myDrawer },
-
-  
-  // Interest: { screen: InterestScreen },
-  // Biography: { screen: BiographyScreen },
-  // ImageUpload: { screen: ImageUploadScreen },
-  // SimilarInterests: { screen: SimilarInterestsLayout },
-  // LoggedIn: { screen: LoggedInScreen }
+  Setting: { screen: SettingScreen},
+  Interest: { screen: InterestScreen },
+  Biography: { screen: BiographyScreen },
+  ImageUpload: { screen: ImageUploadScreen },
+  SimilarInterests: { screen: SimilarInterestsLayout },
+  LoggedIn: { screen: LoggedInScreen }
 });
 
 
