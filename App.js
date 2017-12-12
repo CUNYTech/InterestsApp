@@ -12,14 +12,15 @@ import ImageUploadScreen from './components/registration/ImageUpload';
 import LoginFormScreen from './components/login/LoginForm';
 import SimilarInterestsLayout from './components/similarInterests/similarInterestsView.js';
 import LoggedInScreen from './components/loggedIn/loggedInScreen.js';
-import UserProfile from './components/userViews/profile.js';
+//import UserProfile from './components/userViews/profile.js';
 import SideBar from './components/NavigationMenu/SideBar.js';
 import SettingScreen from './components/settings/setting.js';
 import Chat from './components/chat/chat.js';
+import TestPage from "./testpage.js";
 
 
 const myDrawer = DrawerNavigator({
-	UserProfile: { screen: UserProfile },
+//UserProfile: { screen: UserProfile },
 	Interest: { screen: InterestScreen },
     Biography: { screen: BiographyScreen },
     ImageUpload: { screen: ImageUploadScreen },
@@ -40,7 +41,8 @@ const SimpleApp = StackNavigator({
   Biography: { screen: BiographyScreen },
   ImageUpload: { screen: ImageUploadScreen },
   SimilarInterests: { screen: SimilarInterestsLayout },
-  LoggedIn: { screen: LoggedInScreen }
+  LoggedIn: { screen: LoggedInScreen },
+  TestPage: { screen: TestPage }
 });
 
 

@@ -17,6 +17,8 @@ import Firebase from "firebase";
 //import {send, subscribe} from 'react-native-training-chat-server';
 import Header from './Header';
 
+
+
 const NAME = '@realDonaldTrump';
 const CHANNEL = 'Chat';
 const AVATAR =
@@ -36,6 +38,24 @@ export default class Chat extends React.Component {
     subscribe(CHANNEL, messages => {
        this.setState({messages});
      });
+  }
+
+  componentDidMount () {
+    this.scrollToBottom()
+  }
+
+  // The magical function! 🎉
+  scrollToBottom(animated = true) {
+    if (this.listHeight && this.footerY && this.footerY > this.listHeight) {
+      // Calculates the y scroll position inside the ListView
+      const scrollTo = this.footerY - this.listHeight
+
+      // Scroll that sucker!
+      this.refs.FlatList.scrollTo({
+        y: scrollTo,
+        animated: animated,
+      })
+    }
   }
 
   sendMessage = async () => {
@@ -72,7 +92,7 @@ export default class Chat extends React.Component {
     return (
       <View style={styles.container}>
         <Header title={CHANNEL} />
-        <FlatList inverted
+        <FlatList
           data={this.state.messages}
           renderItem={this.renderItem}
         />
