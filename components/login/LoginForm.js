@@ -112,7 +112,7 @@ export default class LoginFormScreen extends Component {
                   rounded light>
             <Text>Skip x</Text>
           </Button>
-
+        {/* TODO: 32/40 */}
           <Button onPress={() => navigate('Setting')}
                   rounded light>
             <Text>Settings</Text>
