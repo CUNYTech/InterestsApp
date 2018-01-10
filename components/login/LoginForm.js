@@ -103,38 +103,6 @@ export default class LoginFormScreen extends Component {
             <Text>Skip Login</Text>
           </Button>
         </Container>
-
-
-        <Container style={{  "flexDirection": "row",
-                        "justifyContent": "center",
-                        "alignItems": 'center'}}>
-          <Button nPress={() => navigate("DrawerOpen")}
-                  rounded light>
-            <Text>Skip x</Text>
-          </Button>
-        {/* TODO: 32/40 */}
-          <Button onPress={() => navigate('Setting')}
-                  rounded light>
-            <Text>Settings</Text>
-          </Button>
-
-          <Button onPress={() => navigate('Chat')}
-                  rounded light>
-            <Text>Chat</Text>
-          </Button>
-
-          <Button onPress={() => navigate('Chat')}
-                  rounded light>
-            <Text>Chat</Text>
-          </Button>
-
-          <Button onPress={() => navigate('TestPage')}
-                  rounded light>
-            <Text>Test</Text>
-          </Button>
-
-        </Container>
-
       </Container>
     </StyleProvider>
     );

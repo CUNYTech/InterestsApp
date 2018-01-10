@@ -19,7 +19,7 @@ import Header from './Header';
 
 
 
-const NAME = '@realDonaldTrump';
+let NAME = '@realDonaldTrump';
 const CHANNEL = 'Chat';
 const AVATAR =
   'https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg';
@@ -28,6 +28,21 @@ export default class Chat extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: "Chat"
       });
+
+      constructor(props) {
+        super(props);
+
+        var userId = Firebase.auth().currentUser.uid;
+        Firebase
+        .database()
+        .ref("/users/" + userId)
+        .on("value", snapshot => {
+          NAME = snapshot.val().userName;
+        });
+    }
+    
+       // this.handlePress = this.handlePress.bind(this);
+      //}
 
   state = {
     typing: '',

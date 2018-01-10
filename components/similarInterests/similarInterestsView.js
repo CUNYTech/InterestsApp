@@ -11,14 +11,11 @@ Child Components: InterestCard
 ******************************************************************************/
 
 import React, { Component } from 'react';
-import {Container, Content, Spinner, Text, StyleProvider, H1, Header, Right, Button, Icon, Body, Title } from 'native-base';
+import {Container, Content, Spinner, Text, StyleProvider, H1 } from 'native-base';
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 import InterestCardList from './interestCardList.js';
 import * as firebase from "firebase";
-//import Drawer from 'react-native-drawer';
-import SideBar from '../NavigationMenu/SideBar.js';
-import { Drawer } from 'native-base';
 
 /******************************************************************************
   SimilarInterestsLayout Class Declaration
@@ -33,18 +30,7 @@ export default class SimilarInterestsLayout extends Component {
   //@title: renders the title for the Header Page
   static navigationOptions = ({ navigation }) => ({
     title: 'Users based by Interests',
-    //header: ({ navigation }) => ({
-       // right:(
-       //      <Button
-       //        transparent
-       //        onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-       //        <Icon name="menu" />
-       //      </Button>
-       // )      
-       
-     //}),
   });
-
 
   //@loggedInUserId: this id represents the Logged In users' firebase id.
   //@loggedInUsersInterests: this variables stores all of the interests by a user in firebase.
@@ -80,9 +66,6 @@ export default class SimilarInterestsLayout extends Component {
       })
     })
   }
- 
-   
-
 
   /******************************************************************************
     Render
@@ -92,16 +75,13 @@ export default class SimilarInterestsLayout extends Component {
   //@Description: Renders a loading button while information is being fetched from db. Upon success, it iterates through loggedInUsersInterests and passes its element as a prop to InterestCard.
   //@Postcondition: Once state.loading is false, render InterestCard.
 
-
   render(){
 
     return(
       <StyleProvider style={getTheme(material)}>
-      <Container>    
-        
-        
+      <Container>
         {
-             this.state.loading ? (
+          this.state.loading ? (
             <Content>
               <Spinner />
               <Text style={{"textAlign": "center"}}> Loading Interests of Users </Text>
@@ -123,14 +103,11 @@ export default class SimilarInterestsLayout extends Component {
             </Content>
           )
         }
-      
       </Container>
       </StyleProvider>
     )
   }
 }
-
-
 
 
 

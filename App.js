@@ -17,7 +17,7 @@ import SideBar from './components/NavigationMenu/SideBar.js';
 import SettingScreen from './components/settings/setting.js';
 import Chat from './components/chat/chat.js';
 import TestPage from "./testpage.js";
-
+import UserProfileScreen from './components/userViews/UserProfile';
 
 const myDrawer = DrawerNavigator({
 //UserProfile: { screen: UserProfile },
@@ -26,7 +26,8 @@ const myDrawer = DrawerNavigator({
     ImageUpload: { screen: ImageUploadScreen },
     SimilarInterests: { screen: SimilarInterestsLayout },
     LoggedIn: { screen: LoggedInScreen },
-    Chat: { screen: Chat}
+    Chat: { screen: Chat},
+    UserProfile: { screen: UserProfileScreen },
 },
 {
 	contentComponent: props => <SideBar {...props} />
@@ -42,7 +43,9 @@ const SimpleApp = StackNavigator({
   ImageUpload: { screen: ImageUploadScreen },
   SimilarInterests: { screen: SimilarInterestsLayout },
   LoggedIn: { screen: LoggedInScreen },
-  TestPage: { screen: TestPage }
+  TestPage: { screen: TestPage },
+  Chat: { screen: Chat},
+  UserProfile: { screen: UserProfileScreen },
 });
 
 

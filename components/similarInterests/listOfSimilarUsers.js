@@ -14,6 +14,7 @@ import React, { Component } from 'react';
 import { Image} from 'react-native';
 import { Content, Card, CardItem, Spinner, Text, Right, Left, Icon} from 'native-base';
 import * as firebase from "firebase";
+import { withNavigation, StackNavigator } from 'react-navigation';
 
 
 /******************************************************************************
@@ -99,7 +100,7 @@ class ImageComponent extends Component{
   @USE-CASE: renders a list of users based on their used id.
 ******************************************************************************/
 
-export default class ListOfSimilarUsers extends Component {
+ class ListOfSimilarUsers extends Component {
 
   /******************************************************************************
   Navigation and Constructor
@@ -146,9 +147,19 @@ export default class ListOfSimilarUsers extends Component {
     );
   }
 
+  //@Title: onPress
+  //@Description: Passes props through navigate to UserProfile
+  onPress(user) {
+    const { navigate } = this.props.navigation;
+    let runThis = () => navigate('UserProfile', {userId: user});
+    runThis();
+  }
+
   //@Title: Render
   //@Description: Renders a list of users with image and name.
   //@Postcondition: Renders a loading button while information is being fetched from db. Upon success, it iterates through loggedInUsersInterests and passes its element as a prop to InterestCard.
+  //@withNavigation: is a Higher Order Component which passes the navigation prop into a wrapped Component that is globally available.
+ 
 
   // OPTIMIZATION
   // @Issue: static cards
@@ -169,9 +180,9 @@ export default class ListOfSimilarUsers extends Component {
               return(
                  <CardItem key={key}>
                     <ImageComponent userId={item.userId}/>
-                    <Text style={{"flexGrow":2}}> {item.name} </Text>
+                    <Text style={{"flexGrow":2}} onPress={()=>this.onPress(item.userId)}> {item.name} </Text>
                     <Right>
-                      <Icon name='add-circle' />
+                      <Icon name='add-circle' onPress={()=>this.onPress(item.userId)}/>
                     </Right>
                 </CardItem>
               )
@@ -182,3 +193,5 @@ export default class ListOfSimilarUsers extends Component {
     )
   }
 }
+
+export default withNavigation(ListOfSimilarUsers);
