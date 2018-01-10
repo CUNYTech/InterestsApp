@@ -1,0 +1,35 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'newProject_InterestApp' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+  
+  # Pods for newProject_InterestApp
+  pod 'RSKImageCropper'
+  pod 'QBImagePickerController'
+
+  #target 'newProject_InterestApp-tvOSTests' do
+    #inherit! :search_paths
+    # Pods for testing
+  #end
+
+  #target 'newProject_InterestAppTests' do
+    #inherit! :search_paths
+    # Pods for testing
+  #end
+
+end
+
+#target 'newProject_InterestApp-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for newProject_InterestApp-tvOS
+
+  #target 'newProject_InterestApp-tvOSTests' do
+   # inherit! :search_paths
+    # Pods for testing
+ # end
+
+#end

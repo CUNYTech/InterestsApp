@@ -8,7 +8,7 @@ import { StackNavigator,DrawerNavigator } from 'react-navigation';
 import firebase from "firebase";
 import InterestScreen from './components/registration/InterestsPage';
 import BiographyScreen from './components/registration/Biography';
-import ImageUploadScreen from './components/registration/ImageUpload';
+// import ImageUploadScreen from './components/registration/ImageUpload';
 import LoginFormScreen from './components/login/LoginForm';
 import SimilarInterestsLayout from './components/similarInterests/similarInterestsView.js';
 import LoggedInScreen from './components/loggedIn/loggedInScreen.js';
@@ -23,7 +23,7 @@ const myDrawer = DrawerNavigator({
 //UserProfile: { screen: UserProfile },
 	Interest: { screen: InterestScreen },
     Biography: { screen: BiographyScreen },
-    ImageUpload: { screen: ImageUploadScreen },
+    // ImageUpload: { screen: ImageUploadScreen },
     SimilarInterests: { screen: SimilarInterestsLayout },
     LoggedIn: { screen: LoggedInScreen },
     Chat: { screen: Chat},
@@ -40,7 +40,7 @@ const SimpleApp = StackNavigator({
   Setting: { screen: SettingScreen},
   Interest: { screen: InterestScreen },
   Biography: { screen: BiographyScreen },
-  ImageUpload: { screen: ImageUploadScreen },
+  // ImageUpload: { screen: ImageUploadScreen },
   SimilarInterests: { screen: SimilarInterestsLayout },
   LoggedIn: { screen: LoggedInScreen },
   TestPage: { screen: TestPage },

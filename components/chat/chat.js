@@ -19,10 +19,10 @@ import Header from './Header';
 
 
 
-let NAME = '@realDonaldTrump';
+let NAME = 'test';
 const CHANNEL = 'Chat';
 const AVATAR =
-  'https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg';
+  'https://i.imgur.com/cHA13fN.jpg';
 
 export default class Chat extends React.Component {
     static navigationOptions = ({ navigation }) => ({
@@ -111,7 +111,7 @@ export default class Chat extends React.Component {
           data={this.state.messages}
           renderItem={this.renderItem}
         />
-        <KeyboardAvoidingView behavior="padding">
+        <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={64}>
           <View style={styles.footer}>
             <TextInput
               value={this.state.typing}

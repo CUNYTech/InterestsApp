@@ -29,7 +29,7 @@ import UserProfile from '../../components/userViews/profile.js';
 import SimilarInterestsLayout from '../../components/similarInterests/similarInterestsView.js';
 import InterestScreen from '../../components/registration/InterestsPage.js';
 import BiographyScreen from '../../components/registration/Biography.js';
-import ImageUploadScreen from '../../components/registration/ImageUpload.js';
+// import ImageUploadScreen from '../../components/registration/ImageUpload.js';
 import LoggedInScreen from '../../components/loggedIn/loggedInScreen.js';
 
 import { StackNavigator } from 'react-navigation';
@@ -70,12 +70,12 @@ export default class SideBar extends Component {
                   rounded light>
             <Text>Biography</Text>
     </Button>
-    
+{/*     
     <Button onPress={() => navigate('ImageUpload')} 
                   rounded light>
             <Text>Image Upload</Text>
     </Button>
-     
+      */}
     </View>
     );
   }

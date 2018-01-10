@@ -25,12 +25,16 @@ export default class LoginFormScreen extends Component {
 
 
   async signup() {
+    const { navigate } = this.props.navigation;
     try {
         await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
         //send userId to the user table to create a new node within the user table, the new node will hold the userid ex: id: 234 everytime to fill this
         this.setState({
             response: "Account Created"
         });
+
+        let runThis = () => navigate('Interest');
+        runThis();
 
     } catch (error) {
         this.setState({

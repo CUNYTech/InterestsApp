@@ -67,7 +67,7 @@ export default class BiographyScreen extends Component {
     updates['/users/' + uid + '/bio'] = this.state.bio;
     updates['/users/' + uid + '/userName'] = this.state.userName;
     firebase.database().ref().update(updates);
-    let runThis = () => navigate('ImageUpload');
+    let runThis = () => navigate('LoginForm');
         runThis();
   }
 
