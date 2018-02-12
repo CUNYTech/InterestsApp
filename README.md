@@ -1,6 +1,6 @@
 Interests App
 
-![Screenshot] (ezgif-1-cf77ad97d8.gif)
+![Alt Text](https://github.com/CUNYTech/InterestsApp/blob/master/ezgif-1-cf77ad97d8.gif)
 
 A tinder clone mobile app that matches up people with users with shared interests.
 
